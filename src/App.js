@@ -5,15 +5,18 @@ import BookDetail from './pages/BookDetail';
 import BookList from './pages/BookList';
 import { books } from './data/data';
 import Home from './pages/Home';
+import { useState } from 'react';
+import { UserContext } from './Context';
 function App() {
+  const [userName, setUserName] = useState("Naraa");
   return (
-    <div className="App">
+    <UserContext.Provider value={{userName,setUserName}}>
      <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/books' element={<BookList books={books}/>}/>
       <Route path='/books/:id' element={<BookDetail books={books}/>}/>
      </Routes>
-    </div>
+    </UserContext.Provider>
   );
 }
 
